@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43116381242C7ECE00B5FD7A /* KeyboardCheckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43116380242C7ECE00B5FD7A /* KeyboardCheckController.swift */; };
+		43386D7A242C8F9E009148D6 /* FontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43386D79242C8F9E009148D6 /* FontViewController.swift */; };
 		43865138242A17F4006E0F1F /* MemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43865137242A17F4006E0F1F /* MemeModel.swift */; };
 		43A25BD02429E2D9007852C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A25BCF2429E2D9007852C8 /* AppDelegate.swift */; };
 		43A25BD22429E2D9007852C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A25BD12429E2D9007852C8 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		43116380242C7ECE00B5FD7A /* KeyboardCheckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardCheckController.swift; sourceTree = "<group>"; };
+		43386D79242C8F9E009148D6 /* FontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewController.swift; sourceTree = "<group>"; };
 		43865137242A17F4006E0F1F /* MemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeModel.swift; sourceTree = "<group>"; };
 		43A25BCC2429E2D9007852C8 /* Meme-Udacity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme-Udacity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A25BCF2429E2D9007852C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				43A25BE32429ECC1007852C8 /* Attributed.swift */,
 				43A25BD32429E2D9007852C8 /* MainViewController.swift */,
 				43116380242C7ECE00B5FD7A /* KeyboardCheckController.swift */,
+				43386D79242C8F9E009148D6 /* FontViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43A25BD42429E2D9007852C8 /* MainViewController.swift in Sources */,
+				43386D7A242C8F9E009148D6 /* FontViewController.swift in Sources */,
 				43A25BD02429E2D9007852C8 /* AppDelegate.swift in Sources */,
 				43A25BD22429E2D9007852C8 /* SceneDelegate.swift in Sources */,
 				43116381242C7ECE00B5FD7A /* KeyboardCheckController.swift in Sources */,
