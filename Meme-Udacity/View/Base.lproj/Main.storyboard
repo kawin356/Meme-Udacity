@@ -95,6 +95,7 @@
                         <outlet property="fontChangeButton" destination="vqd-av-aNp" id="AEu-fa-N2C"/>
                         <outlet property="memeImageView" destination="xbQ-SJ-f5v" id="r2M-2r-ANZ"/>
                         <outlet property="resetButton" destination="XdR-yC-7qw" id="eMR-of-0HR"/>
+                        <outlet property="sharedButton" destination="njf-7j-Fk8" id="2CD-d4-xyb"/>
                         <outlet property="toolbarPhoto" destination="v9B-RD-6HS" id="IwC-2x-LRz"/>
                         <outlet property="topTextField" destination="h6o-vy-3wO" id="AdV-x4-qn8"/>
                     </connections>

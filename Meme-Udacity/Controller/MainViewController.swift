@@ -17,6 +17,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var fontChangeButton: UIBarButtonItem!
+    @IBOutlet weak var sharedButton: UIBarButtonItem!
     
     let pickImage = UIImagePickerController()
     
@@ -58,6 +59,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         bottomTextField.isHidden = isDisable
         resetButton.isEnabled = !isDisable
         fontChangeButton.isEnabled = !isDisable
+        sharedButton.isEnabled = !isDisable
     }
     
     
@@ -75,6 +77,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func resetButtonPressed(_ sender: UIBarButtonItem) {
         memeImageView.image = UIImage()
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
         showLabel(isDisable: true)
     }
     
