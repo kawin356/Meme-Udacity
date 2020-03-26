@@ -95,17 +95,30 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
     }
 }
 
+
+//MARK: - UIActivity To Save Meme
 extension MainViewController {
 
     @IBAction func activityButtonPressed(_ sender: Any) {
         let image = generateMemedImage()
         let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityVC.completionWithItemsHandler = { activity, completed, items, error in
+            if completed {
+                self.saveMeme()
+            }
+        }
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    func saveMeme() {
+        // use next ep
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: memeImageView.image!, memeImage: generateMemedImage())
+        
     }
 
     func generateMemedImage() -> UIImage {
 
-        // TODO: Hide toolbar and navbar
+        // Hide toolbar and navbar
         toolbarPhoto.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: true)
 
@@ -115,7 +128,7 @@ extension MainViewController {
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
 
-        // TODO: Show toolbar and navbar
+        // Show toolbar and navbar
         toolbarPhoto.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: true)
 
