@@ -87,9 +87,9 @@
 		43A25BE52429EDF6007852C8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				43A25BE32429ECC1007852C8 /* Attributed.swift */,
 				43A25BD32429E2D9007852C8 /* MainViewController.swift */,
 				43116380242C7ECE00B5FD7A /* KeyboardCheckController.swift */,
+				43A25BE32429ECC1007852C8 /* Attributed.swift */,
 				43386D79242C8F9E009148D6 /* FontViewController.swift */,
 			);
 			path = Controller;

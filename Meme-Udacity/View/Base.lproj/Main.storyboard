@@ -23,12 +23,14 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="Ort-Lh-sum"/>
                                     <barButtonItem title="Album" id="A7r-HA-bf3">
+                                        <color key="tintColor" red="0.1529411765" green="0.13725490200000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="addPhotoBarButton:" destination="BYZ-38-t0r" id="gay-dT-0Kf"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="i3d-BW-U9B"/>
                                     <barButtonItem title="Font" id="vqd-av-aNp">
+                                        <color key="tintColor" red="0.1529411765" green="0.13725490200000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="6tN-qh-SL8" kind="show" identifier="FontViewPage" id="Xhs-XG-QSB"/>
                                         </connections>
@@ -37,6 +39,7 @@
                                     <barButtonItem systemItem="camera" id="U1a-ni-MsD">
                                         <inset key="imageInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                        <color key="tintColor" red="0.1529411765" green="0.13725490200000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="cameraBarButton:" destination="BYZ-38-t0r" id="ZMl-eO-lho"/>
                                         </connections>
@@ -74,11 +77,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="zMN-3D-hhC">
                         <barButtonItem key="leftBarButtonItem" image="square.and.arrow.up" catalog="system" id="njf-7j-Fk8">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="activityButtonPressed:" destination="BYZ-38-t0r" id="d2z-5B-kNN"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Reset" id="XdR-yC-7qw">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="resetButtonPressed:" destination="BYZ-38-t0r" id="zg1-hk-tRH"/>
                             </connections>
@@ -98,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Font View Controller-->
+        <!--Change Font-->
         <scene sceneID="d0a-YB-C5W">
             <objects>
                 <viewController id="6tN-qh-SL8" customClass="FontViewController" customModule="Meme_Udacity" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +118,7 @@
                                     <outlet property="delegate" destination="6tN-qh-SL8" id="ZdJ-JU-OQ7"/>
                                 </connections>
                             </pickerView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test Text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwM-Ds-QP3">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test Text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwM-Ds-QP3">
                                 <rect key="frame" x="107" y="248" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="BHR-JY-tQM"/>
@@ -122,7 +127,7 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test Text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owP-8M-ZTa">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test Text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owP-8M-ZTa">
                                 <rect key="frame" x="107" y="308" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="HX8-ZL-Vqt"/>
@@ -144,7 +149,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WnA-ks-nm5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="atQ-xc-Omu"/>
+                    <navigationItem key="navigationItem" title="Change Font" id="atQ-xc-Omu"/>
                     <connections>
                         <outlet property="fontPickerView" destination="Wd1-1o-2XL" id="c5i-VC-rXM"/>
                         <outlet property="testBottomTextField" destination="owP-8M-ZTa" id="ypH-ud-wlu"/>
@@ -163,6 +168,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jb2-Fb-W86">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.1529411765" green="0.13725490200000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

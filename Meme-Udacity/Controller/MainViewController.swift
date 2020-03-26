@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var toolbarPhoto: UIToolbar!
     @IBOutlet weak var memeImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -23,12 +23,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     //MARK: - App LifeCycle
     
     override func viewDidLoad() {
-           super.viewDidLoad()
-           pickImage.delegate = self
-           topTextField.delegate = self
-           bottomTextField.delegate = self
-
-           showLabel(isDisable: true)
+        super.viewDidLoad()
+        pickImage.delegate = self
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        
+        showLabel(isDisable: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,16 +65,14 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func addPhotoBarButton(_ sender: UIBarButtonItem) {
         pickImage.sourceType = .photoLibrary
-        self.present(pickImage, animated: true) {
-        }
+        self.present(pickImage, animated: true, completion: nil)
     }
     
     @IBAction func cameraBarButton(_ sender: Any) {
         pickImage.sourceType = .camera
-        self.present(pickImage, animated: true) {
-        }
+        self.present(pickImage, animated: true, completion: nil)
     }
-
+    
     @IBAction func resetButtonPressed(_ sender: UIBarButtonItem) {
         memeImageView.image = UIImage()
         showLabel(isDisable: true)
@@ -96,9 +94,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FontViewPage" {
             let fontViewController = segue.destination as! FontViewController
-            fontViewController.textTopFromMain = topTextField.text!
-            fontViewController.textBottomFromMain = bottomTextField.text!
-            
+            fontViewController.textTopFromMain = topTextField.text ?? "TOP"
+            fontViewController.textBottomFromMain = bottomTextField.text ?? "BOTTOM"
         }
     }
 }
@@ -123,7 +120,7 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 //MARK: - UIActivity To Save Meme
 extension MainViewController {
-
+    
     @IBAction func activityButtonPressed(_ sender: Any) {
         let image = generateMemedImage()
         let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
@@ -137,25 +134,27 @@ extension MainViewController {
     
     func saveMeme() {
         // use next ep
-        let _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: memeImageView.image!, memeImage: generateMemedImage())
-        
+        let _ = Meme(topText: topTextField.text ?? "",
+                     bottomText: bottomTextField.text ?? "",
+                     originalImage: memeImageView.image ?? UIImage(),
+                     memeImage: generateMemedImage())
     }
-
+    
     func generateMemedImage() -> UIImage {
         // Hide toolbar and navbar
         toolbarPhoto.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: true)
-
+        
         // Render view to an image
         let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
         let memeImage = renderer.image { ctx in
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
-
+        
         // Show toolbar and navbar
         toolbarPhoto.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: true)
-
+        
         return memeImage
     }
 }

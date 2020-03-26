@@ -32,7 +32,6 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadAndSetAttribute()
         
         // Set text from MainViewController
@@ -42,16 +41,16 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     func loadAndSetAttribute() {
         let currentFont: UIFont = memeTextAttributes[NSAttributedString.Key.font] as! UIFont
-        let fontPosition = allFontNames.firstIndex(of: currentFont.fontName)!
-        let sizePosition = sizeFont.firstIndex(of: Int(Float(currentFont.pointSize)))!
+        let fontPosition = allFontNames.firstIndex(of: currentFont.fontName) ?? 0
+        let sizePosition = sizeFont.firstIndex(of: Int(Float(currentFont.pointSize))) ?? 0
         print(currentFont.pointSize)
         fontPickerView.selectRow(fontPosition, inComponent:0, animated:true)
         fontPickerView.selectRow(sizePosition, inComponent:1, animated:true)
         setTextDefaultTextAttributes()
     }
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 2 // For font name and size
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -60,7 +59,6 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         } else {
             return sizeFont.count
         }
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
