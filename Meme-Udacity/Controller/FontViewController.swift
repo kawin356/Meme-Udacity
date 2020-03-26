@@ -10,6 +10,14 @@ import UIKit
 
 class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var testTopTextField: UITextField!
+    @IBOutlet weak var testBottomTextField: UITextField!
+    
+    @IBOutlet weak var fontPickerView: UIPickerView!
+    
+    var textTopFromMain: String = ""
+    var textBottomFromMain: String = ""
+    
     let allFontNames: [String] = {
         var fontNames = [String]()
         UIFont.familyNames.sorted().forEach { familyName in
@@ -20,9 +28,23 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         return fontNames
     }()
     
-    let sizeFont: [Int] = Array(8...60)
+    let sizeFont: [Int] = Array(8...50)
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let currentFont: UIFont = memeTextAttributes[NSAttributedString.Key.font] as! UIFont
+        let fontPosition = allFontNames.firstIndex(of: currentFont.fontName)!
+        let sizePosition = sizeFont.firstIndex(of: Int(Float(currentFont.pointSize)))!
+        print(currentFont.pointSize)
+        fontPickerView.selectRow(fontPosition, inComponent:0, animated:true)
+        fontPickerView.selectRow(sizePosition, inComponent:1, animated:true)
+        testTopTextField.defaultTextAttributes = memeTextAttributes
+        
+        testTopTextField.text = textTopFromMain
+        testBottomTextField.text = textBottomFromMain
+    }
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -44,11 +66,15 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         }
         
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let fontName = allFontNames[pickerView.selectedRow(inComponent: 0)]
+        let size = sizeFont[pickerView.selectedRow(inComponent: 1)]
+        memeTextAttributes[NSAttributedString.Key.font] = UIFont(name: fontName, size: CGFloat(size))
+        testTopTextField.defaultTextAttributes = memeTextAttributes
     }
+
+
     
     
     

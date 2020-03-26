@@ -87,6 +87,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         textField.endEditing(true)
         return true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FontViewPage" {
+            let fontViewController = segue.destination as! FontViewController
+            fontViewController.textTopFromMain = topTextField.text!
+            fontViewController.textBottomFromMain = bottomTextField.text!
+            
+        }
+    }
 }
 
 //MARK: - ImagePickerDelegate

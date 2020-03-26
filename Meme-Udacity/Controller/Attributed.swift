@@ -16,7 +16,7 @@ func getParagraph() -> NSMutableParagraphStyle {
     return paragraph
 }
 
-let memeTextAttributes: [NSAttributedString.Key: Any] = [
+var memeTextAttributes: [NSAttributedString.Key: Any] = [
     NSAttributedString.Key.strokeColor: UIColor.black/* TODO: fill in appropriate UIColor */,
     NSAttributedString.Key.foregroundColor: UIColor.white/* TODO: fill in appropriate UIColor */,
     NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
