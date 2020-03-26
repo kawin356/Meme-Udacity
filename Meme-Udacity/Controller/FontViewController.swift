@@ -33,16 +33,21 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadAndSetAttribute()
+        
+        // Set text from MainViewController
+        testTopTextField.text = textTopFromMain
+        testBottomTextField.text = textBottomFromMain
+    }
+    
+    func loadAndSetAttribute() {
         let currentFont: UIFont = memeTextAttributes[NSAttributedString.Key.font] as! UIFont
         let fontPosition = allFontNames.firstIndex(of: currentFont.fontName)!
         let sizePosition = sizeFont.firstIndex(of: Int(Float(currentFont.pointSize)))!
         print(currentFont.pointSize)
         fontPickerView.selectRow(fontPosition, inComponent:0, animated:true)
         fontPickerView.selectRow(sizePosition, inComponent:1, animated:true)
-        testTopTextField.defaultTextAttributes = memeTextAttributes
-        
-        testTopTextField.text = textTopFromMain
-        testBottomTextField.text = textBottomFromMain
+        setTextDefaultTextAttributes()
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -64,18 +69,17 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         } else {
             return String(sizeFont[row])
         }
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let fontName = allFontNames[pickerView.selectedRow(inComponent: 0)]
         let size = sizeFont[pickerView.selectedRow(inComponent: 1)]
         memeTextAttributes[NSAttributedString.Key.font] = UIFont(name: fontName, size: CGFloat(size))
-        testTopTextField.defaultTextAttributes = memeTextAttributes
+        setTextDefaultTextAttributes()
     }
-
-
     
-    
-    
+    func setTextDefaultTextAttributes() {
+        testTopTextField.defaultTextAttributes = memeTextAttributes
+        testBottomTextField.defaultTextAttributes = memeTextAttributes
+    }
 }

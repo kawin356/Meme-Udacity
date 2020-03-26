@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var resetButton: UIBarButtonItem!
+    @IBOutlet weak var fontChangeButton: UIBarButtonItem!
     
     let pickImage = UIImagePickerController()
     
@@ -26,14 +27,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
            pickImage.delegate = self
            topTextField.delegate = self
            bottomTextField.delegate = self
-           setupUI()
+
            showLabel(isDisable: true)
-       }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         checkKeyboard()
+        setupUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,6 +57,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         topTextField.isHidden = isDisable
         bottomTextField.isHidden = isDisable
         resetButton.isEnabled = !isDisable
+        fontChangeButton.isEnabled = !isDisable
     }
     
     
@@ -80,7 +83,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     //MARK: - TextfieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
