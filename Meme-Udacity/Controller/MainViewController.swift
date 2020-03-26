@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Meme-Udacity
 //
 //  Created by Kittikawin Sontinarakul on 24/3/2563 BE.
@@ -15,29 +15,20 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-   
+    @IBOutlet weak var resetButton: UIBarButtonItem!
+    
     let pickImage = UIImagePickerController()
     
+    //MARK: - App LifeCycle
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        pickImage.delegate = self
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        setupUI()
-        showLabel(isDisable: true)
-    }
-    
-    func setupUI() {
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.backgroundColor = .clear
-        bottomTextField.backgroundColor = .clear
-    }
-    
-    func showLabel(isDisable: Bool) {
-        topTextField.isHidden = isDisable
-        bottomTextField.isHidden = isDisable
-    }
+           super.viewDidLoad()
+           pickImage.delegate = self
+           topTextField.delegate = self
+           bottomTextField.delegate = self
+           setupUI()
+           showLabel(isDisable: true)
+       }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,6 +41,24 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         removeCheckKeyboard()
         
     }
+    
+    //MARK: - Setup UI
+    
+    func setupUI() {
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.backgroundColor = .clear
+        bottomTextField.backgroundColor = .clear
+    }
+    
+    func showLabel(isDisable: Bool) {
+        topTextField.isHidden = isDisable
+        bottomTextField.isHidden = isDisable
+        resetButton.isEnabled = !isDisable
+    }
+    
+    
+    //MARK: - IBAction
     
     @IBAction func addPhotoBarButton(_ sender: UIBarButtonItem) {
         pickImage.sourceType = .photoLibrary
@@ -67,6 +76,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         memeImageView.image = UIImage()
         showLabel(isDisable: true)
     }
+    
+    //MARK: - TextfieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
@@ -112,12 +123,11 @@ extension MainViewController {
     
     func saveMeme() {
         // use next ep
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: memeImageView.image!, memeImage: generateMemedImage())
+        let _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: memeImageView.image!, memeImage: generateMemedImage())
         
     }
 
     func generateMemedImage() -> UIImage {
-
         // Hide toolbar and navbar
         toolbarPhoto.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: true)

@@ -58,9 +58,9 @@
                             <constraint firstItem="xbQ-SJ-f5v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PUB-2O-1jN"/>
                             <constraint firstItem="xbQ-SJ-f5v" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ToK-Vp-UnR"/>
                             <constraint firstItem="h6o-vy-3wO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VbF-v0-r8O"/>
-                            <constraint firstItem="v9B-RD-6HS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="je9-In-ulQ"/>
+                            <constraint firstItem="v9B-RD-6HS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="je9-In-ulQ"/>
                             <constraint firstItem="HPV-k0-gBo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k8t-7u-AZz"/>
-                            <constraint firstItem="v9B-RD-6HS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kz8-k6-qLM"/>
+                            <constraint firstItem="v9B-RD-6HS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kz8-k6-qLM"/>
                             <constraint firstItem="h6o-vy-3wO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="l4C-3r-PVR"/>
                             <constraint firstItem="xbQ-SJ-f5v" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="mvv-fK-Ddi"/>
                         </constraints>
@@ -82,6 +82,7 @@
                         <outlet property="bottomTextField" destination="HPV-k0-gBo" id="BB6-Pq-ngf"/>
                         <outlet property="cameraButton" destination="U1a-ni-MsD" id="hFu-Hx-CV7"/>
                         <outlet property="memeImageView" destination="xbQ-SJ-f5v" id="r2M-2r-ANZ"/>
+                        <outlet property="resetButton" destination="XdR-yC-7qw" id="eMR-of-0HR"/>
                         <outlet property="toolbarPhoto" destination="v9B-RD-6HS" id="IwC-2x-LRz"/>
                         <outlet property="topTextField" destination="h6o-vy-3wO" id="AdV-x4-qn8"/>
                     </connections>
