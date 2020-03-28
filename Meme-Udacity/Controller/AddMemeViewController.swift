@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  AddMemeViewController.swift
 //  Meme-Udacity
 //
 //  Created by Kittikawin Sontinarakul on 24/3/2563 BE.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class AddMemeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var toolbarPhoto: UIToolbar!
     @IBOutlet weak var memeImageView: UIImageView!
@@ -20,6 +20,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sharedButton: UIBarButtonItem!
     
     let pickImage = UIImagePickerController()
+    
+    var memes: [Meme]! {
+          let object = UIApplication.shared.delegate
+          let appDelegate = object as! AppDelegate
+          return appDelegate.memes
+      }
+    
+    var isSelectedMemeToEdit: Bool = false
+    var selectMemetoEdit: Int!
     
     //MARK: - App LifeCycle
     
@@ -37,12 +46,22 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         checkKeyboard()
         setupUI()
+        checkEditImage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeCheckKeyboard()
         
+    }
+    
+    func checkEditImage() {
+        if isSelectedMemeToEdit {
+            topTextField.text = memes[selectMemetoEdit].topText
+            bottomTextField.text = memes[selectMemetoEdit].bottomText
+            memeImageView.image = memes[selectMemetoEdit].originalImage
+            showLabel(isDisable: false)
+        }
     }
     
     //MARK: - Setup UI
@@ -106,7 +125,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
 //MARK: - ImagePickerDelegate
 
-extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddMemeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -123,7 +142,7 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 
 //MARK: - UIActivity To Save Meme
-extension MainViewController {
+extension AddMemeViewController {
     
     @IBAction func activityButtonPressed(_ sender: Any) {
         let image = generateMemedImage()
@@ -131,6 +150,7 @@ extension MainViewController {
         activityVC.completionWithItemsHandler = { activity, completed, items, error in
             if completed {
                 self.saveMeme()
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }
         self.present(activityVC, animated: true, completion: nil)
@@ -138,10 +158,16 @@ extension MainViewController {
     
     func saveMeme() {
         // use next ep
-        let _ = Meme(topText: topTextField.text ?? "",
+        let meme = Meme(topText: topTextField.text ?? "",
                      bottomText: bottomTextField.text ?? "",
                      originalImage: memeImageView.image ?? UIImage(),
                      memeImage: generateMemedImage())
+        
+        // Add it to the memes array in the Application Delegate
+           let object = UIApplication.shared.delegate
+           let appDelegate = object as! AppDelegate
+           appDelegate.memes.append(meme)
+        print(appDelegate.memes.count)
     }
     
     func generateMemedImage() -> UIImage {

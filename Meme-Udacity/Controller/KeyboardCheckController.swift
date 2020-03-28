@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension MainViewController {
+extension AddMemeViewController {
     
     func checkKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardScreenUp(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)

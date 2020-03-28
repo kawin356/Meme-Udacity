@@ -34,7 +34,7 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         super.viewDidLoad()
         loadAndSetAttribute()
         
-        // Set text from MainViewController
+        // Set text from AddMemeViewController
         testTopTextField.text = textTopFromMain
         testBottomTextField.text = textBottomFromMain
     }
