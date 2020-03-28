@@ -19,11 +19,21 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let space = CGFloat(1.0)
-        // let dimension = (view.frame.width - (2 * space)) / 4
+        setLayout()
+    }
+    
+    func setLayout() {
+        let space = CGFloat(2.0)
+        let dimension = (view.frame.width - (2 * space))
+        
         flowLayout.minimumLineSpacing = space
         flowLayout.minimumInteritemSpacing = space
-        flowLayout.itemSize = CGSize(width: 200, height: 100)
+        
+        if UIDevice.current.orientation.isLandscape {
+            flowLayout.itemSize = CGSize(width: dimension/8, height: dimension/8)
+        } else {
+            flowLayout.itemSize = CGSize(width: dimension/3, height: dimension/3)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +44,12 @@ class MemeCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.reuseCollectionViewCell, for: indexPath) as! MemeCollectionViewCell
         cell.memeImageView.image = memes[indexPath.row].memeImage
-        // Configure the cell
-        
         return cell
     }
     
@@ -50,10 +57,8 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let editMemeVC = storyboard?.instantiateViewController(withIdentifier: K.StoryBoard.editMemeViewController) as! AddMemeViewController
-        
         editMemeVC.selectMemetoEdit = indexPath.row
         editMemeVC.isSelectedMemeToEdit = true
-        
         navigationController?.pushViewController(editMemeVC, animated: true)
     }
     

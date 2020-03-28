@@ -180,6 +180,7 @@ extension AddMemeViewController {
         let memeImage = renderer.image { ctx in
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
+            
         
         // Show toolbar and navbar
         toolbarPhoto.isHidden = false

@@ -34,13 +34,12 @@ class MemeTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.reuseTableViewCell, for: indexPath)
         let textTop = memes[indexPath.row].topText
         let textBottom = memes[indexPath.row].bottomText
-        
         cell.textLabel!.text = "\(textTop) ... \(textBottom)"
         cell.imageView?.image = memes[indexPath.row].originalImage
-        
         return cell
     }
     
