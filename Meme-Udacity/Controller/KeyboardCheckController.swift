@@ -11,11 +11,13 @@ import UIKit
 
 extension AddMemeViewController {
     
+    // Start Listener
     func checkKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardScreenUp(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardScreenDown(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    // Remove Listener
     func removeCheckKeyboard() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)

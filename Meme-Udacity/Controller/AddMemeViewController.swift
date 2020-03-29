@@ -19,13 +19,19 @@ class AddMemeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var fontChangeButton: UIBarButtonItem!
     @IBOutlet weak var sharedButton: UIBarButtonItem!
     
+    @IBOutlet weak var memeImageRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var memeImageLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var memeImageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var memeImageBottomConstraint: NSLayoutConstraint!
+    
+    
     let pickImage = UIImagePickerController()
     
     var memes: [Meme]! {
-          let object = UIApplication.shared.delegate
-          let appDelegate = object as! AppDelegate
-          return appDelegate.memes
-      }
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
     
     var isSelectedMemeToEdit: Bool = false
     var selectMemetoEdit: Int!
@@ -96,15 +102,15 @@ class AddMemeViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func resetButtonPressed(_ sender: UIBarButtonItem) {
         memeImageView.image = UIImage()
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        topTextField.text = K.DefaultText.resetTopText
+        bottomTextField.text = K.DefaultText.resetBottomText
         showLabel(isDisable: true)
     }
     
     //MARK: - TextfieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == "TOP" || textField.text == "BOTTOM" {
+        if textField.text == K.DefaultText.resetTopText || textField.text == K.DefaultText.resetBottomText {
             textField.text = ""
         }
     }
@@ -115,10 +121,10 @@ class AddMemeViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FontViewPage" {
+        if segue.identifier == K.Segue.fontViewController {
             let fontViewController = segue.destination as! FontViewController
-            fontViewController.textTopFromMain = topTextField.text ?? "TOP"
-            fontViewController.textBottomFromMain = bottomTextField.text ?? "BOTTOM"
+            fontViewController.textTopFromMain = topTextField.text ?? K.DefaultText.resetTopText
+            fontViewController.textBottomFromMain = bottomTextField.text ?? K.DefaultText.resetBottomText
         }
     }
 }
@@ -157,30 +163,27 @@ extension AddMemeViewController {
     }
     
     func saveMeme() {
-        // use next ep
         let meme = Meme(topText: topTextField.text ?? "",
-                     bottomText: bottomTextField.text ?? "",
-                     originalImage: memeImageView.image ?? UIImage(),
-                     memeImage: generateMemedImage())
+                        bottomText: bottomTextField.text ?? "",
+                        originalImage: memeImageView.image ?? UIImage(),
+                        memeImage: generateMemedImage())
         
-        // Add it to the memes array in the Application Delegate
-           let object = UIApplication.shared.delegate
-           let appDelegate = object as! AppDelegate
-           appDelegate.memes.append(meme)
-        print(appDelegate.memes.count)
+        // Add object to the memes array in the AppDelegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func generateMemedImage() -> UIImage {
         // Hide toolbar and navbar
         toolbarPhoto.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
+         
         // Render view to an image
         let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
         let memeImage = renderer.image { ctx in
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
-            
         
         // Show toolbar and navbar
         toolbarPhoto.isHidden = false
@@ -188,4 +191,5 @@ extension AddMemeViewController {
         
         return memeImage
     }
+    
 }

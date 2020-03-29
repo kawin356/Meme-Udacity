@@ -12,12 +12,13 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBOutlet weak var testTopTextField: UITextField!
     @IBOutlet weak var testBottomTextField: UITextField!
-    
     @IBOutlet weak var fontPickerView: UIPickerView!
     
     var textTopFromMain: String = ""
     var textBottomFromMain: String = ""
     
+    
+    // Load All font
     let allFontNames: [String] = {
         var fontNames = [String]()
         UIFont.familyNames.sorted().forEach { familyName in
@@ -41,13 +42,16 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     func loadAndSetAttribute() {
         let currentFont: UIFont = memeTextAttributes[NSAttributedString.Key.font] as! UIFont
+        
+        // Search index in allFontNames and select row in PickerView
         let fontPosition = allFontNames.firstIndex(of: currentFont.fontName) ?? 0
         let sizePosition = sizeFont.firstIndex(of: Int(Float(currentFont.pointSize))) ?? 0
-        print(currentFont.pointSize)
         fontPickerView.selectRow(fontPosition, inComponent:0, animated:true)
         fontPickerView.selectRow(sizePosition, inComponent:1, animated:true)
         setTextDefaultTextAttributes()
     }
+    
+    //MARK: - UIPickerViewDataSource
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2 // For font name and size
@@ -68,6 +72,8 @@ class FontViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             return String(sizeFont[row])
         }
     }
+    
+    //MARK: - UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let fontName = allFontNames[pickerView.selectedRow(inComponent: 0)]

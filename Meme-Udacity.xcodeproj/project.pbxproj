@@ -82,13 +82,13 @@
 			children = (
 				43A25BCF2429E2D9007852C8 /* AppDelegate.swift */,
 				43A25BD12429E2D9007852C8 /* SceneDelegate.swift */,
+				435331CF242F3F540074CBF8 /* Constants.swift */,
 				43865136242A17DE006E0F1F /* Model */,
 				43A25BE62429EDFF007852C8 /* View */,
 				43A25BE52429EDF6007852C8 /* Controller */,
 				43A25BD82429E2DA007852C8 /* Assets.xcassets */,
 				43A25BDA2429E2DA007852C8 /* LaunchScreen.storyboard */,
 				43A25BDD2429E2DA007852C8 /* Info.plist */,
-				435331CF242F3F540074CBF8 /* Constants.swift */,
 			);
 			path = "Meme-Udacity";
 			sourceTree = "<group>";

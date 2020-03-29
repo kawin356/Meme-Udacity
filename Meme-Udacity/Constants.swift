@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct K {
     struct Cell {
@@ -17,6 +18,20 @@ struct K {
     struct StoryBoard {
         static let showMemeViewController = "ShowMemeViewController"
         static let editMemeViewController = "EditMemeViewController"
+    }
+    
+    struct Segue {
+        static let fontViewController = "FontViewPage"
+    }
+    
+    struct DefaultText {
+        static let resetTopText = "TOP"
+        static let resetBottomText = "BOTTOM"
+    }
+    
+    struct Font {
+        static let defaultFont = "HelveticaNeue-CondensedBlack"
+        static let defaultSize: CGFloat = 40
     }
     
 }
