@@ -2,6 +2,8 @@
 
 This app is Meme generate allow user to use own photo form library or Camera and add text to the photo
 
+![](screenshotMeme.gif)
+
 # License
 
 MIT License
